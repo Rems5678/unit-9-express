@@ -11,10 +11,13 @@ const PORT = 3000;
  */
 const router = require('./routes/api.js');
 const favsRouter = require('./routes/favs.js');
-
+const charRouter = require('./routes/characters.js');
+const nicknameRouter = require('./routes/nicknames.js');
 /**
  * handle parsing request body
  */
+app.use(bodyParser.json())
+
 app.get('/', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../client/index.html'));
 })
@@ -26,8 +29,10 @@ app.use('/assets', express.static(path.join(__dirname, '../client/assets')))
 /**
  * define route handlers
  */
+app.use('/api/characters', charRouter)
 app.use('/api', router);
 app.use('/api/favs', favsRouter);
+app.use('/api/nicknames', nicknameRouter);
 
 // catch-all route handler for any requests to an unknown route
 

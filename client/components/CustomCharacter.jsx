@@ -45,18 +45,18 @@ class CustomCharacter extends Component {
      */
 
     /** MAIN CHALLENGE CODE - comment out if working on Extension 1  */
-    const charId = this.props.match.params.id;
-    const nicknamesToUpdate = { ...this.props.nicknames };
-    if (nicknamesToUpdate
-      && nicknamesToUpdate[charId]
-      && !this.state.nickname.length) {
-      delete nicknamesToUpdate[charId];
-    } else {
-      nicknamesToUpdate[charId] = this.state.nickname;
-    }
-    this.props.updateNicknames(nicknamesToUpdate);
+    // const charId = this.props.match.params.id;
+    // const nicknamesToUpdate = { ...this.props.nicknames };
+    // if (nicknamesToUpdate
+    //   && nicknamesToUpdate[charId]
+    //   && !this.state.nickname.length) {
+    //   delete nicknamesToUpdate[charId];
+    // } else {
+    //   nicknamesToUpdate[charId] = this.state.nickname;
+    // }
+    // this.props.updateNicknames(nicknamesToUpdate);
 
-    /** EXTENSION 1 CODE - uncomment if working on extension 1
+    /** EXTENSION 1 CODE - uncomment if working on extension 1*/
     let method = 'PUT';
     const charId = this.props.match.params.id;
     if (this.props.nicknames[charId]
@@ -69,7 +69,7 @@ class CustomCharacter extends Component {
       .then(res => res.json())
       .then(({ nicknames }) => this.props.updateNicknames(nicknames))
       .catch(err => console.log('favClicked: ERROR: ', err));
-    */
+    
   }
 
   handleNicknameInput(e) {

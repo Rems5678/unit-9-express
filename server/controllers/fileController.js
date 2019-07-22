@@ -63,6 +63,19 @@ fileController.removeFav = (req, res, next) => {
       message: { err: 'fileController.removeFav: ERROR: Check server logs for details' },
     })
   }
+  const id = req.params.id;
+  if(res.locals.favs[id]){
+    delete res.locals.favs[id];
+    fs.writeFileSync(path.join(__dirname, '../data/favs.json'), JSON.stringify(res.locals.favs),(err) => {
+      if(err){
+        return next({
+          log: `fileController.removeFav: ERROR: /* the error from the file system / other calls */`,
+          message: { err: 'fileController.removeFav: ERROR: Check server logs for details' },
+        })
+      }
+    })
+  }
+  return next()
 }
 
 // Extention 1: ADD MIDDLEWARE TO GET CHARACTER NICKNAMES HERE

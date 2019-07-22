@@ -10,5 +10,4 @@ const router = express.Router();
 router.get('/', fileController.getCharacters, fileController.getFavs, (req, res, next) => {
   res.status(200).json({characters : res.locals.characters, favs: res.locals.favs})
 })
-
 module.exports = router;

@@ -12,6 +12,8 @@ res.status(200).json({favs: res.locals.favs});
 })
 
 // ADD REMOVE FAVORITE ROUTE HANDLER HERE
-
+router.delete('/:id', fileController.getFavs, fileController.removeFav, (req, res, next) => {
+  res.status(200).json({favs: res.locals.favs});
+})
 
 module.exports = router;
